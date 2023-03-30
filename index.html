@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <style>
+        body {
+    background-color: rgb(31, 30, 30);
+    background-image: url(static/4.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    backface-visibility: visible;
+        }
+
+        input[type="file"]{
+            display: none;
+        }
+        label{
+            color: white;
+            height: 20px;
+            width: 130px;
+            text-transform: uppercase;
+            text-align: center;
+            display: grid;
+            place-content: center;
+            margin-top: -38.7px;
+            margin-left: 35%;
+            letter-spacing: 1.5px;
+            font-size: 14px;
+            font-family: "Poppins",sans-serif;
+            background-color: #c0392b;
+            padding:8.5px 25px;
+            cursor: pointer;
+            user-select: none;
+            box-shadow: 5px 15px 25px rgba(0,0,0,0.15);
+            border-radius: 3px;
+        }
+        .submitbtn{
+            font-size: 14px;
+            color: #ffffff;
+            margin-top: 425px;
+            margin-left:50%;
+            border-radius: 4px;
+            text-transform: uppercase;
+            text-align: center;
+            display: grid;
+            place-content: center;
+            letter-spacing: 1.5px;
+            font-family: "Poppins",sans-serif;
+            padding: 10px 25px;
+            background-color: rgb(6, 175, 175);
+            cursor: pointer;
+        }
+
+        .req{
+            /* -40% */
+            margin-top: 4%; 
+            margin-left: 30px;
+            float: left;
+            height: 300px;
+            width: 635px;
+            background-color: rgb(0, 0, 0,0.55);
+            border-radius: 4px;
+            border: 1px solid  #c0392b;
+            box-shadow: 5px 15px 25px rgba(254, 0, 0, 0.15)
+        }
+
+        .req h3{
+            color: rgb(254, 254, 254);
+            font-family:Verdana;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+            margin-top: 15px;
+            font-weight: normal;
+            margin-left: 20px;
+            font-size: 27px;
+        }
+
+        .req p{
+            margin-left: 20px;
+            color: rgb(247, 247, 247);
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            letter-spacing: 1px;
+            font-size: 19px;
+        }
+
+        .head{
+            width: 635px;
+            margin-left: 30px;
+            margin-top: 38px;
+            background-color: rgb(0, 0, 0,0.55);
+            border-radius: 4px;
+            border: 1px solid  #1acbdb;
+            box-shadow: 5px 15px 25px rgba(14, 184, 240, 0.15)
+        }
+        .head h2{
+            color: rgb(255, 253, 253);
+            margin-bottom: 10px;
+            font-family:Verdana;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+            margin-top: 15px;
+            font-weight: normal;
+            margin-left: 20px;
+            font-size: 40px;
+        }
+
+        .head p{
+            font-style: italic;
+            margin-left: 20px;
+            color: rgb(255, 255, 255);
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            letter-spacing: 0.5px;
+            font-size: 18px;
+        }
+        .dis{
+            color: rgb(251, 251, 251);
+            float:right;
+            margin-top: -43%;
+            margin-right: 214px;
+        }
+        
+        .dis table{
+            border-collapse: collapse;
+            /* border-radius: 4x; */
+            background-color: rgb(0, 0, 0,0.55);
+            border: 1px solid   #1acbdb;
+            width: 150%;
+            
+        }
+        .dis th{
+            height: 45px;
+            font-size: 20px;
+            font-family:Verdana;
+        }
+        .dis td{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+            height: 38px;
+        }
+        .bm{
+            width: 148%;
+            background-color: rgb(0, 0, 0,0.55);
+            margin-top: 25px;
+            padding-left: 10px;
+            padding-top: 0.2px;
+            padding-bottom: 0.2px;
+            border-radius: 4px;
+            border: 1px solid  #c0392b;
+            box-shadow: 5px 15px 25px rgba(254, 0, 0, 0.25);
+
+        }
+        .bm p{
+            font-family:Verdana;
+            text-align: center;
+            font-size: large;
+        }
+        
+    </style>
+    <title>Best Model</title>
+</head>
+<body>
+    <div class="head">
+        <h2>Model-Selector</h2>
+        <p>"Give me data, I'll tell you the model"<p>
+    </div>
+    <div class="req">
+        <h3>Constraints</h3>
+        <p> -Dataset must be clean.<br>
+            -Targets must be in the last column of the dataset.<br>
+            -Model performances are without hyperparamter optimization.<br>
+            -Gives the model with least error for regression<br>
+            -Gives the model with maximum score for classification<br>
+        </p>
+    </div>
+    <form action="/file" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="uploadBtn" accept=".csv">
+        <input type="submit" class="submitbtn" value="Process Data">
+        <label for="uploadBtn" >Upload file</label>
+    </form>
+    <div class="dis">
+        <table border="1">
+            <tr>
+                <th width="220px">Model</th>
+                <th>Train</th>
+                <th>Test</th>
+            </tr>
+            {% for row in data %}
+            <tr align="center">
+                <td >{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>	
+
+            </tr>
+            {% endfor %}
+        </table>
+        {%if bmod%}
+        <div class="bm">
+            <p>Best model is <u>{{bmod}}</u> </p>
+        </div>
+        {% endif %}
+    </body>
+</body>
+</html>
